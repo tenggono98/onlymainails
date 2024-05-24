@@ -22,9 +22,12 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
     Route::prefix('admin')->group(function () {
 
-        Route::view('dashboard', 'dashboard')
-        ->middleware(['auth', 'verified'])
-        ->name('admin.dashboard');
+        // Route::view('dashboard', 'dashboard')
+        // ->middleware(['auth', 'verified'])
+        // ->name('admin.dashboard');
+
+
+        Route::get('/dashboard',\App\Livewire\Admin\Dashboard::class)->name('admin.dashboard');
 
 
     });

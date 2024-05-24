@@ -18,14 +18,14 @@
 
     </div>
 
-    <section id="nav-dekstop" class="bg-[#f8f3ee] p-5">
+    <section id="nav-dekstop" class="bg-[#fadde1] p-5">
 
 
         <div class="flex justify-between w-full ">
 
             {{-- Logo --}}
             <div class="">
-                <img src="https://i.pinimg.com/736x/ba/b1/a0/bab1a08437f933a6f47e64f3174495cd.jpg" class="h-28" alt="">
+                <img src="{{ asset('img/transparant-logo.png') }}" class="h-28" alt="">
             </div>
             {{-- Logo --}}
 
