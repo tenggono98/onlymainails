@@ -2,7 +2,7 @@
     {{-- Do your work, then step back. --}}
 
 
-    <div class="grid grid-cols-4 gap-5 px-20 py-10">
+    <div class="grid gap-5 px-10 py-10 lg:px-20 lg:grid-cols-4">
 
         {{-- Image --}}
         <div class="">

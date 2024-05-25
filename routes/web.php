@@ -1,11 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 // Route::view('/', 'welcome');
 
 Route::get('/',\App\Livewire\Homepage::class)->name('home');
 Route::get('/book',\App\Livewire\Book::class)->name('book');
+Route::get('/user/login',\App\Livewire\Login::class)->name('user.login');
+
 
 
 
@@ -19,6 +22,21 @@ Route::get('/book',\App\Livewire\Book::class)->name('book');
 
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
+
+    Route::prefix('admin')->group(function () {
+
+        // Route::view('dashboard', 'dashboard')
+        // ->middleware(['auth', 'verified'])
+        // ->name('admin.dashboard');
+
+
+        Route::get('/dashboard',\App\Livewire\Admin\Dashboard::class)->name('admin.dashboard');
+
+
+    });
+});
+
+Route::middleware(['auth', 'role:user'])->group(function () {
 
     Route::prefix('admin')->group(function () {
 

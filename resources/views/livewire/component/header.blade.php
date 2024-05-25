@@ -1,4 +1,7 @@
+
+
 <div>
+
     {{-- If your happiness depends on money, you will never be happy with yourself. --}}
 
 
@@ -7,13 +10,27 @@
             {{-- <h1 class="uppercase lg:text-2xl">Only Mai Nails</h1> --}}
         </div>
         <div class="lg:justify-center">
+            @if(empty(Auth::user()->role))
             <ul class="flex justify-center gap-4">
                 <li>Already Member?</li>
-                <li>Login</li>
-                <li>Sign Up</li>
+                <li class="cursor-pointer"><a class="w-full" href="{{ route('user.login') }}">Login</a></li>
+                <li class="cursor-pointer"><a class="w-full" href="{{ route('user.login') }}">Sign Up</a></li>
+            </ul>
+            @else
+
+            <ul class="flex justify-center gap-4">
+                <li>Hello, <span class="font-semibold">{{ Auth::user()->name }}</span></li>
+                <li class="cursor-pointer">Booking History</li>
+                <li class="cursor-pointer">Change Password</li>
+                <li class="cursor-pointer"><a wire:click="logout" >Logout</a></li>
             </ul>
 
+
+            @endif
+
         </div>
+
+
 
 
     </div>
@@ -43,6 +60,7 @@
         </div>
 
     </section>
+
 
 
 

@@ -3,18 +3,19 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        @vite('resources/css/app.css')
+        @vite('resources/css/app-admin.css')
+        @vite('resources/js/app.js')
         <title>{{ $title ?? 'Admin | Only Mai Nails' }}</title>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Jacquard+12&display=swap" rel="stylesheet">
     </head>
-    <body class="bg-gray-300 ">
+    <body class="bg-gray-100 ">
 
         @livewire('component.admin.header')
-        <div class="">
-        {{ $slot }}
 
+        <div class="p-4 sm:ml-64">
+            {{ $slot }}
         </div>
 
         <div class="relative bottom-0">
@@ -23,5 +24,4 @@
 
     </body>
 
-    <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
 </html>
