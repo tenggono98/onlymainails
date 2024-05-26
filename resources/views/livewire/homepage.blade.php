@@ -6,7 +6,7 @@
     <section id="hero">
         <div class="lg:grid lg:grid-cols-7 lg:grid-flow-col">
             <div class="lg:col-span-3">
-                <img src="https://t3.ftcdn.net/jpg/07/12/36/86/360_F_712368671_1E1PQAvv85uuwOXrKb4uEcT6QtjgWH5P.jpg" class="w-full rounded-lg lg:h-full h-72 lg:w-auto" alt="">
+                <img src="{{ asset('img/IMG_3915.png') }}" class="object-cover w-full rounded-lg lg:h-full h-72 lg:w-auto" alt="">
             </div>
             <div class="p-5 text-justify lg:col-span-4 lg:px-40 lg:py-14">
 
@@ -70,7 +70,7 @@
             </div>
 
             <div class="lg:col-span-3">
-                <img src="https://t3.ftcdn.net/jpg/07/12/36/86/360_F_712368671_1E1PQAvv85uuwOXrKb4uEcT6QtjgWH5P.jpg" class="w-full rounded-lg lg:h-full h-72 lg:w-auto" alt="">
+                <img src="{{ asset('img/IMG_3916.png') }}" class="object-cover w-full rounded-lg lg:h-full h-72 lg:w-auto" alt="">
             </div>
         </div>
 
@@ -103,7 +103,7 @@
     <section id="why-us">
         <div class="lg:grid lg:grid-cols-7 lg:grid-flow-col">
             <div class="lg:col-span-3">
-                <img src="https://t3.ftcdn.net/jpg/07/12/36/86/360_F_712368671_1E1PQAvv85uuwOXrKb4uEcT6QtjgWH5P.jpg" class="w-full rounded-lg lg:h-full h-72 lg:w-auto" alt="">
+                <img src="{{ asset('img/IMG_3917.png') }}" class="object-cover w-full rounded-lg lg:h-full h-72 lg:w-auto" alt="">
             </div>
 
             <div class="p-5 text-justify lg:col-span-4 lg:px-40 lg:py-14">

@@ -15,6 +15,7 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
             'role' => RoleCheck::class,
+            'Debugbar', \Barryvdh\Debugbar\Facades\Debugbar::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
