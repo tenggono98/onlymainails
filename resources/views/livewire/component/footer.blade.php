@@ -20,8 +20,8 @@
         <div class="">
             <h1 class="text-2xl uppercase">Working Hours</h1>
             <p class="uppercase">Mondays <span class="font-light"> 10AM, 12PM, 2PM </span></p>
-            <p class="uppercase">Wednesdays <span class="font-light"> 12PM, 2PM</span></p>
-            <p class="uppercase">Fridays  <span class="font-light"> 12 PM </span></p>
+            <p class="uppercase">Tuesdays <span class="font-light"> 12PM, 2PM</span></p>
+            <p class="uppercase">Wednesdays  <span class="font-light"> 12 PM </span></p>
 
         </div>
         {{-- Info 2 --}}

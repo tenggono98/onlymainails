@@ -14,6 +14,17 @@ class Book extends Component
 
     public function render()
     {
+        $serviceCategory = [
+            [
+                'id' => 0,
+                'name' =>'Gel-X'
+            ],
+            [
+                'id' => 1,
+                'name' =>'Builder Gel Overlay'
+            ],
+        ];
+
         $service = [
             [
                 'id' => 0,
@@ -33,13 +44,19 @@ class Book extends Component
                 'name' => 'Gel-X Fills',
                 'price' => 85
             ],
+            [
+                'id' => 3,
+                'category' => 'Builder Gel Overlay',
+                'name' => 'Gel-X Fills',
+                'price' => 85
+            ],
 
         ];
 
         // dd($service);
 
 
-        return view('livewire.book',compact('service'));
+        return view('livewire.book',compact('service','serviceCategory'));
     }
 
 

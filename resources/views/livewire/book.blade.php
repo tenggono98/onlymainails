@@ -7,13 +7,57 @@
     <div class="container p-4 mx-auto">
 
 
-        
+
         <!-- Service Selection -->
         <div x-data="{ open: @entangle('flagService') }">
             <div x-show="open" x-transition>
-                <h2 class="mb-4 text-xl font-bold">Select Service</h2>
-                <!-- Service selection form goes here -->
-                <button wire:click="next('service')" class="px-4 py-2 text-white bg-blue-500 rounded">Next</button>
+                <div x-data="{ openCategory: null }" class="">
+
+                    <h2 class="mb-4 text-xl font-bold">Select Service</h2>
+                    <!-- Service selection form goes here -->
+
+                    {{-- Category --}}
+                    <div class="flex gap-4 mt-10 mb-2">
+                        @foreach ($serviceCategory as $key => $cat)
+                        <div x-on:click="openCategory = openCategory === {{ $key }} ? null : {{ $key }}"
+                             :class="openCategory === {{ $key }} ? 'border-white bg-[#fadde1]' : 'border-[#fadde1]'"
+                             class="flex-auto p-4 border rounded-lg hover:cursor-pointer hover:border-white hover:bg-[#fadde1]">
+                            <h1>{{ $cat['name'] }}</h1>
+                        </div>
+                        @endforeach
+                    </div>
+                    {{-- -------------- --}}
+
+                    @foreach ($serviceCategory as $key => $cat)
+                    {{-- Category Item --}}
+                    <div x-bind:class="openCategory !== {{ $key }} ? 'hidden' : ''" class="border rounded-lg border-[#fadde1] mb-10 mt-2">
+                        @foreach($service as $serv)
+                            @if($serv['category'] == $cat['name'])
+                            <label for="{{ $cat['id'] }}-{{ $serv['id'] }}">
+                                <div class="flex justify-between p-2 hover:cursor-pointer hover:border-white hover:bg-[#fadde1]">
+                                    <div class="">
+                                    {{ $serv['name'] }}
+
+                                    </div>
+                                    <div class="">
+                                    <input id="{{ $cat['id'] }}-{{ $serv['id'] }}" type="checkbox" value="{{ $serv['id'] }}">
+
+                                    </div>
+
+
+
+
+                                </div>
+                            </label>
+                            @endif
+                        @endforeach
+                    </div>
+                    {{-- ------------ --}}
+                    @endforeach
+
+                    <button wire:click="next('service')" class="px-4 py-2 text-white bg-blue-500 rounded">Next</button>
+                </div>
+
             </div>
         </div>
 
