@@ -2,6 +2,8 @@
 
 namespace App\Livewire;
 
+use App\Models\MService;
+use App\Models\MServiceCategory;
 use Livewire\Component;
 
 class Book extends Component
@@ -14,49 +16,16 @@ class Book extends Component
 
     public function render()
     {
-        $serviceCategory = [
-            [
-                'id' => 0,
-                'name' =>'Gel-X'
-            ],
-            [
-                'id' => 1,
-                'name' =>'Builder Gel Overlay'
-            ],
-        ];
+        $serviceCategory = MServiceCategory::with('services')->where('status',true)->get();
 
-        $service = [
-            [
-                'id' => 0,
-                'category' => 'Gel-X',
-                'name' => 'Gel-X Short',
-                'price' => 75
-            ],
-            [
-                'id' => 1,
-                'category' => 'Gel-X',
-                'name' => 'Gel-X Medium',
-                'price' => 80
-            ],
-            [
-                'id' => 2,
-                'category' => 'Gel-X',
-                'name' => 'Gel-X Fills',
-                'price' => 85
-            ],
-            [
-                'id' => 3,
-                'category' => 'Builder Gel Overlay',
-                'name' => 'Gel-X Fills',
-                'price' => 85
-            ],
+        // dd($serviceCategory);
 
-        ];
+        // $service = MService::where('status',true)->orderBy('name_service')->get();
 
         // dd($service);
 
 
-        return view('livewire.book',compact('service','serviceCategory'));
+        return view('livewire.book',compact('serviceCategory'));
     }
 
 

@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -20,5 +23,22 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         //
+        DB::listen(function($query) {
+            $user = Auth::user();
+
+            $logData = [
+                'sql' => $query->sql,
+                'bindings' => $query->bindings,
+                'time' => $query->time,
+            ];
+
+            if ($user) {
+                $logData['user'] = 'ID: ' . $user->id . ' Name: ' . $user->name;
+            } else {
+                $logData['user'] = 'Guest';
+            }
+
+            Log::info('Query executed', $logData);
+        });
     }
 }

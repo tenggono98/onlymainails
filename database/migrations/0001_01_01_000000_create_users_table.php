@@ -18,6 +18,7 @@ return new class extends Migration
             $table->enum('role',['admin','user']);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('ig_tag')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
