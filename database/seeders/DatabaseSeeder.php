@@ -51,11 +51,6 @@ class DatabaseSeeder extends Seeder
                 'm_service_category_id' => 1
             ],
             [
-                'name_service' => 'Fills',
-                'price_service' => 85,
-                'm_service_category_id' => 1
-            ],
-            [
                 'name_service' => 'Short',
                 'price_service' => 55,
                 'm_service_category_id' => 2
@@ -106,5 +101,14 @@ class DatabaseSeeder extends Seeder
                 'm_service_category_id' => 4
             ],
         ]);
+
+        MService::insert([
+            [
+                'name_service' => 'Fills',
+                'price_service' => 85,
+                'is_merge' => 1,
+                'm_service_category_id' => 1
+            ]
+            ]);
     }
 }

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name_service');
             $table->bigInteger('price_service');
+            $table->enum('is_merge',[1,0])->default(0);
             $table->foreignIdFor(MServiceCategory::class);
             $table->foreignIdFor(User::class,'created_by')->nullable();
             $table->foreignIdFor(User::class,'updated_by')->nullable();

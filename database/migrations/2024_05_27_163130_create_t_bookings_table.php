@@ -15,9 +15,10 @@ return new class extends Migration
         Schema::create('t_bookings', function (Blueprint $table) {
             $table->id();
             $table->char('uuid', 36);
-            $table->bigInteger('deposit_price');
-            $table->bigInteger('total_price');
-            $table->bigInteger('total_price_after_tax');
+            $table->bigInteger('deposit_price_booking');
+            $table->bigInteger('total_price_booking');
+            $table->bigInteger('total_price_after_tax_booking');
+            $table->integer('qty_people_booking');
             $table->string('code_booking');
             $table->date('date_booking');
             $table->date('time_booking');
