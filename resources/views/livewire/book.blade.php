@@ -174,7 +174,7 @@
                     @endforeach
                 </tbody>
             </table>
-            <h1>The required deposit is <span class="font-bold"> ${{ (int)$this->deposit->value }}</span>, which will be deducted from the total price.</h1>
+            <h1 class="mt-4">The required deposit is <span class="font-bold"> ${{ (int)$this->deposit->value }}</span>, which will be deducted from the total price.</h1>
         </div>
 
         <div class="flex flex-col gap-3 my-3 lg:flex-row ">
