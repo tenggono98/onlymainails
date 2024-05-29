@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\MService;
 use App\Models\MServiceCategory;
+use App\Models\SettingWeb;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -41,13 +42,18 @@ class DatabaseSeeder extends Seeder
 
         MService::insert([
             [
-                'name_service' => 'Short',
+                'name_service' => 'Short Set',
                 'price_service' => 75,
                 'm_service_category_id' => 1
             ],
             [
-                'name_service' => 'Medium',
+                'name_service' => 'Medium Set',
                 'price_service' => 80,
+                'm_service_category_id' => 1
+            ],
+            [
+                'name_service' => 'Long Set',
+                'price_service' => 85,
                 'm_service_category_id' => 1
             ],
             [
@@ -109,6 +115,18 @@ class DatabaseSeeder extends Seeder
                 'is_merge' => 1,
                 'm_service_category_id' => 1
             ]
+            ]);
+
+
+            SettingWeb::insert([
+                [
+                    'name' => 'Tax',
+                    'value' => '0'
+                ],
+                [
+                    'name' => 'Deposit',
+                    'value' => '20'
+                ]
             ]);
     }
 }

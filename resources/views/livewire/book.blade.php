@@ -174,17 +174,18 @@
                     @endforeach
                 </tbody>
             </table>
+            <h1>The required deposit is <span class="font-bold"> ${{ (int)$this->deposit->value }}</span>, which will be deducted from the total price.</h1>
         </div>
 
         <div class="flex flex-col gap-3 my-3 lg:flex-row ">
             <div class="border border-[#fadde1] p-3 rounded-lg">
-                <h1 class="text-xl">Total Price</h1>
+                <h1 class="text-xl">Total Price (Before Deducted)</h1>
                 <p class="text-4xl">$ {{ $total_price ?? 0 }}</p>
             </div>
 
             <div class="border border-[#fadde1] p-3 rounded-lg">
-                <h1 class="text-xl">Total Deposit (10% of Total Price)</h1>
-                <p class="text-4xl">$ {{ (10 / 100) * ((int)$total_price) ?? 0 }}</p>
+                <h1 class="text-xl">Total Payment (After Deducted)</h1>
+                <p class="text-4xl">$ {{  ((int)$total_price > 0)?  (int)$total_price - (int)$this->deposit->value  : 0 }}</p>
             </div>
 
         </div>

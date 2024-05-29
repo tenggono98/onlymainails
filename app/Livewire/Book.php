@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\MService;
 use App\Models\MServiceCategory;
+use App\Models\SettingWeb;
 use Livewire\Component;
 
 class Book extends Component
@@ -12,12 +13,16 @@ class Book extends Component
     public $selectedServices = [];
     public $total_price ;
 
+    public $deposit ;
+
     public $flagService = true, $flagPickDateAndTime = false, $flagInformationClient = false, $flagSummary = false;
 
 
     public function render()
     {
         $serviceCategory = MServiceCategory::with('services')->where('status',true)->get();
+
+        $this->deposit = SettingWeb::where('name','=','deposit')->first();
 
         // dd($serviceCategory);
 
