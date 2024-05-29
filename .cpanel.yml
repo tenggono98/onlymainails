@@ -1,0 +1,5 @@
+---
+deployment:
+tasks:
+- export DEPLOYPATH=/home/alfy4794/public_html/onlymainails.alfonso-tenggono.online
+- /bin/cp -r * $DEPLOYPATH

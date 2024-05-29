@@ -2,61 +2,7 @@
     {{-- Knowing others is intelligence; knowing yourself is true wisdom. --}}
 
 
-    <div class="container p-4 mx-auto">
-        <h2 class="mb-4 text-xl font-bold">Selected Service</h2>
 
-        <div class="p-3 overflow-x-scroll border border-[#fadde1] rounded-lg">
-            <table class="w-full ">
-                <thead>
-                    <th class="text-left">Name of Service</th>
-                    <th class="text-left">Number of Person</th>
-                    <th class="text-left">Price</th>
-                    <th class="text-left">Total Price</th>
-                </thead>
-                <tbody class="w-full">
-                    @foreach ($selectedServices as $key => $selected )
-                    @php
-                        $total_price += (int)$selected['price'] * (int)$selected['qty'];
-                    @endphp
-                    <tr class="border-b">
-                        <td>{{ $selected['category'] }} - {{ $selected['name'] }}</td>
-                        <td>
-                            {{-- <select name="" id="" wire:model='selectedServices.{{ $key }}.qty'>
-                                @for ($i = 1;$i<99;$i++)
-                                <option value="{{ $i }}">{{ $i }}</option>
-                                @endfor
-                            </select> --}}
-
-                            @if(in_array($selected['id'], array_column($selectedServices, 'id')))
-                                @php
-                                    $selectedServiceKey = array_search($selected['id'], array_column($selectedServices, 'id'));
-                                @endphp
-                                <div>
-                                    <select name="" id="" wire:model.live="selectedServices.{{ $selectedServiceKey }}.qty">
-                                        @for ($i = 1; $i < 99; $i++)
-                                            <option value="{{ $i }}">{{ $i }}</option>
-                                        @endfor
-                                    </select>
-                                </div>
-                            @endif
-                        </td>
-                        <td>${{ $selected['price'] }}</td>
-                        <td>${{ (int)$selected['price'] * (int)$selected['qty'] }}</td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
-
-        <div class="flex my-3 ">
-            <div class="border border-[#fadde1] p-3 rounded-lg">
-                <h1 class="text-xl">Total Price</h1>
-                <p class="text-4xl">$ {{ $total_price ?? 0 }}</p>
-            </div>
-
-        </div>
-
-    </div>
 
 
 
@@ -82,7 +28,7 @@
                     </div>
 
                     {{-- Category --}}
-                    <div class="flex gap-4 mt-10 mb-2">
+                    <div class="flex flex-col gap-4 mt-10 mb-2 lg:flex-row">
                         @foreach ($serviceCategory as $key => $cat)
                             <div x-on:click="openCategory = openCategory === {{ $key }} ? null : {{ $key }}"
                                 :class="openCategory === {{ $key }} ? 'border-white bg-[#fadde1]' : 'border-[#fadde1]'"
@@ -187,6 +133,64 @@
             </div>
         </div>
     </div>
+
+    {{-- Info  --}}
+
+    <div class="container p-4 mx-auto ">
+        <h2 class="mb-4 text-xl font-bold">Service</h2>
+
+        <div class="p-3 overflow-x-scroll border border-[#fadde1] rounded-lg">
+            <table class="w-full ">
+                <thead>
+                    <th class="text-left">Name of Service</th>
+                    <th class="text-left">Number of Person</th>
+                    <th class="text-left">Price</th>
+                    <th class="text-left">Total Price</th>
+                </thead>
+                <tbody class="w-full">
+                    @foreach ($selectedServices as $key => $selected )
+                    @php
+                        $total_price += (int)$selected['price'] * (int)$selected['qty'];
+                    @endphp
+                    <tr class="gap-3 border-b ">
+                        <td class="py-3">{{ $selected['category'] }} - {{ $selected['name'] }}</td>
+                        <td class="py-3">
+                            @if(in_array($selected['id'], array_column($selectedServices, 'id')))
+                                @php
+                                    $selectedServiceKey = array_search($selected['id'], array_column($selectedServices, 'id'));
+                                @endphp
+                                <div>
+                                    <select name="" id="" wire:model.live="selectedServices.{{ $selectedServiceKey }}.qty">
+                                        @for ($i = 1; $i < 99; $i++)
+                                            <option value="{{ $i }}">{{ $i }}</option>
+                                        @endfor
+                                    </select>
+                                </div>
+                            @endif
+                        </td>
+                        <td class="py-3">${{ $selected['price'] }}</td>
+                        <td class="py-3">${{ (int)$selected['price'] * (int)$selected['qty'] }}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+
+        <div class="flex flex-col gap-3 my-3 lg:flex-row ">
+            <div class="border border-[#fadde1] p-3 rounded-lg">
+                <h1 class="text-xl">Total Price</h1>
+                <p class="text-4xl">$ {{ $total_price ?? 0 }}</p>
+            </div>
+
+            <div class="border border-[#fadde1] p-3 rounded-lg">
+                <h1 class="text-xl">Total Deposit (10% of Total Price)</h1>
+                <p class="text-4xl">$ {{ (10 / 100) * ((int)$total_price) ?? 0 }}</p>
+            </div>
+
+        </div>
+
+    </div>
+    {{-- Info --}}
 
 
 
